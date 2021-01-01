@@ -162,18 +162,14 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
             thread.interrupt();
         }
 
-        thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                while (true){
-                    plotData = true;
-                    try {
-                        Thread.sleep(150);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+        thread = new Thread(() -> {
+            while (true){
+                plotData = true;
+                try {
+                    Thread.sleep(150);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
             }
         });
