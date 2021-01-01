@@ -24,9 +24,9 @@ import java.util.List;
 
 public class GyroscopeSensorActivity extends AppCompatActivity implements SensorEventListener {
 
-    private static final String TAG = "AccelerometerSensorActivity";
+    private static final String TAG = "GyroscopeSensorActivity";
     private SensorManager mSensorManager;
-    private Sensor mAccelerometer;
+    private Sensor mGyroscope;
 
     private LineChart mChart;
     private Thread thread;
@@ -39,7 +39,7 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+        mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
         List<Sensor> sensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
 
@@ -47,11 +47,11 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
             Log.d(TAG, "onCreate: Sensor "+ i + ": " + sensors.get(i).toString());
         }
 
-        if (mAccelerometer != null) {
-            mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
+        if (mGyroscope != null) {
+            mSensorManager.registerListener(this, mGyroscope, SensorManager.SENSOR_DELAY_GAME);
         }
 
-        mChart = findViewById(R.id.chart1);
+        mChart = findViewById(R.id.chart4);
 
         // enable description text
         mChart.getDescription().setEnabled(true);
@@ -162,13 +162,18 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
             thread.interrupt();
         }
 
-        thread = new Thread(() -> {
-            while (true){
-                plotData = true;
-                try {
-                    Thread.sleep(150);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+        thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                while (true){
+                    plotData = true;
+                    try {
+                        Thread.sleep(150);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -210,7 +215,7 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mGyroscope, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
@@ -219,5 +224,6 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
         thread.interrupt();
         super.onDestroy();
     }
+
 
 }
