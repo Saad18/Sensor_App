@@ -52,7 +52,7 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
             mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
         }
 
-        mChart = (LineChart) findViewById(R.id.chart1);
+        mChart = findViewById(R.id.chart1);
 
         // enable description text
         mChart.getDescription().setEnabled(true);
@@ -98,12 +98,11 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
         leftAxis.setDrawGridLines(true);
 
         YAxis rightAxis = mChart.getAxisRight();
-        //rightAxis.setEnabled(false);
+//        rightAxis.setEnabled(false);
         rightAxis.setEnabled(true);
-//
-//        mChart.getAxisLeft().setDrawGridLines(true);
-//        mChart.getXAxis().setDrawGridLines(true);
-//        mChart.setDrawBorders(true);
+        mChart.getAxisLeft().setDrawGridLines(true);
+        mChart.getXAxis().setDrawGridLines(true);
+        mChart.setDrawBorders(true);
 
         feedMultiple();
 
