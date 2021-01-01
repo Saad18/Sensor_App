@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".LightSensorActivity">
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="350dp"/>
 
 </LinearLayout>

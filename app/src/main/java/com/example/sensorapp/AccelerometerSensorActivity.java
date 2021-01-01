@@ -40,12 +40,12 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         List<Sensor> sensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
 
-        for(int i=0; i<sensors.size(); i++){
-            Log.d(TAG, "onCreate: Sensor "+ i + ": " + sensors.get(i).toString());
+        for (int i = 0; i < sensors.size(); i++) {
+            Log.d(TAG, "onCreate: Sensor " + i + ": " + sensors.get(i).toString());
         }
 
         if (mAccelerometer != null) {
@@ -69,7 +69,7 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
         mChart.setPinchZoom(true);
 
         // set an alternative background color
-        mChart.setBackgroundColor(Color.WHITE);
+        mChart.setBackgroundColor(Color.DKGRAY);
 
         LineData data = new LineData();
         data.setValueTextColor(Color.WHITE);
@@ -81,35 +81,32 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
         Legend l = mChart.getLegend();
 
         // modify the legend ...
-        l.setForm(Legend.LegendForm.LINE);
-        l.setTextColor(Color.WHITE);
+        l.setForm(Legend.LegendForm.SQUARE);
+        l.setTextColor(Color.BLACK);
 
         XAxis xl = mChart.getXAxis();
-        xl.setTextColor(Color.WHITE);
+        xl.setTextColor(Color.BLACK);
         xl.setDrawGridLines(true);
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
 
         YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setDrawGridLines(true);
+        leftAxis.setTextColor(Color.BLACK);
+        leftAxis.setDrawGridLines(false);
         leftAxis.setAxisMaximum(10f);
         leftAxis.setAxisMinimum(0f);
-        leftAxis.setDrawGridLines(true);
+        leftAxis.setDrawGridLines(false);
 
         YAxis rightAxis = mChart.getAxisRight();
-//        rightAxis.setEnabled(false);
-        rightAxis.setEnabled(true);
-        mChart.getAxisLeft().setDrawGridLines(true);
-        mChart.getXAxis().setDrawGridLines(true);
-        mChart.setDrawBorders(true);
+        rightAxis.setEnabled(false);
+        mChart.getAxisLeft().setDrawGridLines(false);
+        mChart.getXAxis().setDrawGridLines(false);
+        mChart.setDrawBorders(false);
 
         feedMultiple();
 
 
     }
-
-
 
 
     private void addEntry(SensorEvent event) {
@@ -145,10 +142,10 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
 
     private LineDataSet createSet() {
 
-        LineDataSet set = new LineDataSet(null, "Dynamic Data");
+        LineDataSet set = new LineDataSet(null, "Accelerator Sensor Chart");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setLineWidth(3f);
-        set.setColor(Color.MAGENTA);
+        set.setColor(Color.GREEN);
         set.setHighlightEnabled(false);
         set.setDrawValues(false);
         set.setDrawCircles(false);
@@ -159,22 +156,17 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
 
     private void feedMultiple() {
 
-        if (thread != null){
+        if (thread != null) {
             thread.interrupt();
         }
 
-        thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                while (true){
-                    plotData = true;
-                    try {
-                        Thread.sleep(150);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+        thread = new Thread(() -> {
+            while (true) {
+                plotData = true;
+                try {
+                    Thread.sleep(150);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -206,7 +198,7 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
         Log.d(TAG, "onSensorChanged: Sensor valueY:" + event.values[1]);
         Log.d(TAG, "onSensorChanged: Sensor valueZ:" + event.values[2]);
 
-        if(plotData){
+        if (plotData) {
             addEntry(event);
             plotData = false;
         }
@@ -225,5 +217,6 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
         thread.interrupt();
         super.onDestroy();
     }
+
 
 }
