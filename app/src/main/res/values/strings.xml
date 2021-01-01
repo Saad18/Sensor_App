@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Sensor App</string>
-    <string name="accelerometer_sensor_row_data">Accelerometer Sensor</string>
-    <string name="xaxis">XAxis:</string>
-    <string name="yaxis">YAxis:</string>
-    <string name="zaxis">ZAxis:</string>
-    <string name="gyroscope_sensor_raw_daw_data">Gyroscope Sensor</string>
+    <string name="accelerometer_sensor_row_data">Accelerometer</string>
+    <string name="xaxis">X:</string>
+    <string name="yaxis">Y:</string>
+    <string name="zaxis">Z:</string>
+    <string name="gyroscope_sensor_raw_daw_data">Gyroscope </string>
     <string name="value">Value</string>
-    <string name="light_sensor_raw_data">Light Sensor </string>
-    <string name="proximity_sensor_raw_data">Proximity Sensor </string>
+    <string name="light_sensor_raw_data">Light  </string>
+    <string name="proximity_sensor_raw_data">Proximity  </string>
 </resources>

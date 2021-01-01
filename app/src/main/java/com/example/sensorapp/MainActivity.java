@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         notificationManager = NotificationManagerCompat.from(this);
 
-        //showNotification();
+        showNotification(x, y, z, k);
 
         LightSensorXvalue = findViewById(R.id.lightSensorXId);
 
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             k = event.values[0];
         }
 
-        showNotification(x, y, z, k);
+//        showNotification(x, y, z, k);
 
     }
 
