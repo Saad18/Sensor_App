@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             gyroscopeYvalue.setText(String.valueOf(event.values[1]));
             gyroscopeZvalue.setText(String.valueOf(event.values[2]));
 
-            k= event.values[0];
+            k = event.values[0];
         }
 
         showNotification(x, y, z, k);
@@ -163,21 +163,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
           RemoteViews collapsedView = new RemoteViews(getPackageName(),
                  R.layout.notification_collasped);
-          RemoteViews expandedView = new RemoteViews(getPackageName(),
-                R.layout.notification_expanded);
-        Intent clickIntent = new Intent(this, NotificationReceiver.class);
-//        PendingIntent clickPendingIntent = PendingIntent.getBroadcast(this,
-//                0, clickIntent, 0);
+
         collapsedView.setTextViewText(R.id.text_view_collapsed_1, "Sensor Values");
 
         collapsedView.setTextViewText(R.id.text_view_collapsed_2, "L_Sensor: " +" "+ a +" "+ "P_Sensor:" + " "+b);
         collapsedView.setTextViewText(R.id.text_view_collapsed_3, "A_Sensor:" + " "+c +" "+ "G_Sensor:" + " "+ d);
-        expandedView.setImageViewResource(R.id.image_view_expanded, R.drawable.ic_android);
-//        expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent);
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_android)
                 .setCustomContentView(collapsedView)
-//                .setCustomBigContentView(expandedView)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                 .build();
         notificationManager.notify(1, notification);
