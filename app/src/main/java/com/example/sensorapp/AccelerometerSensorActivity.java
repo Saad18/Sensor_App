@@ -124,7 +124,7 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
             }
 
 //         data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 80) + 10f), 0);
-            data.addEntry(new Entry(set.getEntryCount(), event.values[0] + 5), 0);
+            data.addEntry(new Entry(set.getEntryCount(), event.values[0] + 6), 0);
             data.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -142,7 +142,7 @@ public class AccelerometerSensorActivity extends AppCompatActivity implements Se
 
     private LineDataSet createSet() {
 
-        LineDataSet set = new LineDataSet(null, "Accelerator Sensor Chart");
+        LineDataSet set = new LineDataSet(null, "Accelerometer Sensor Chart");
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
         set.setLineWidth(3f);
         set.setColor(Color.GREEN);
