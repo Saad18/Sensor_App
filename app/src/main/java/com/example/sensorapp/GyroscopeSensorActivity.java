@@ -80,17 +80,17 @@ public class GyroscopeSensorActivity extends AppCompatActivity implements Sensor
         Legend l = mChart.getLegend();
 
         // modify the legend ...
-        l.setForm(Legend.LegendForm.SQUARE);
-        l.setTextColor(Color.BLACK);
+        l.setForm(Legend.LegendForm.LINE);
+        l.setTextColor(Color.WHITE);
 
         XAxis xl = mChart.getXAxis();
-        xl.setTextColor(Color.BLACK);
+        xl.setTextColor(Color.WHITE);
         xl.setDrawGridLines(true);
         xl.setAvoidFirstLastClipping(true);
         xl.setEnabled(true);
 
         YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setTextColor(Color.BLACK);
+        leftAxis.setTextColor(Color.WHITE);
         leftAxis.setDrawGridLines(false);
         leftAxis.setAxisMaximum(10f);
         leftAxis.setAxisMinimum(0f);
