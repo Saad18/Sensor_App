@@ -10,3 +10,11 @@
 - How to service run in background in android.
 - During working with notification I have stacked with android custom notification. I asked question on stackoverflow and got the guideline. Learned form that to how to create custom notification. (asked question link: [a link](https://stackoverflow.com/questions/65507240/how-to-pass-the-multiple-sensor-values-to-the-notification-bar-in-android-when-t))
 
+### Tasks that I completed
+- I have added Clickable card views in-home activity.
+- I have added sensor value into cardVeiw. It displays 4 sensor realtime values in cardview (x, y, z values)
+- Custom notification
+- Light sensor time series chart.
+- Proximity sensor time series chart.
+- Accelerometer sensor time series chart
+- Gyroscope sensor time series chart
