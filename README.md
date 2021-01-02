@@ -13,6 +13,7 @@
 ### Tasks that I completed
 - I have added Clickable card views in-home activity.
 - I have added sensor value into cardVeiw. It displays 4 sensor realtime values in cardview (x, y, z values)
+- Notificatino
 - Light sensor time series chart.
 - Proximity sensor time series chart.
 - Accelerometer sensor time series chart
