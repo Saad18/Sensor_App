@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private NotificationManagerCompat notificationManager;
 
-    double x = .0,y = 0.0, z = 0.0, k= 0.0;
+    double x = 0.0,y = 0.0, z = 0.0, k = 0.0;
 
 
 
