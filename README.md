@@ -7,4 +7,6 @@
 - I have learned how to work with built in sensor's (light sensor, proximity sensor, accelerometer senso, gyroscope sensor) in android.
 - I have learned how to work with Realtime graph chart in android. I used third party graph chart (MP Android Graph).
 -I have learned how to work with android built is notification. I also learn how to work with android custom notification.
+-How to service run in background in android.
+-During working with notification I have stacked with android custom notification. I asked question on stackoverflow and got the guideline. Learned form that to how to create custom notification. (asked question link: [a link](https://github.com/user/repo/blob/branch/other_file.md))
 
