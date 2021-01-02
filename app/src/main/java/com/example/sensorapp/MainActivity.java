@@ -21,22 +21,28 @@ import static com.example.sensorapp.App.CHANNEL_ID;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener, View.OnClickListener {
-
+//  Light sensor
     private TextView LightSensorXvalue;
 
+//  Proximity sensor
     private TextView PorximitySensorXvalue;
     private TextView PorximitySensorYvalue;
     private TextView PorximitySensorZvalue;
 
+//    Accelerometer sensor
     private TextView AccelerometerXvalue;
     private TextView AccelerometerYvalue;
     private TextView AccelerometerZvalue;
 
+//  Gyroscope sensor
     private TextView gyroscopeXvalue;
     private TextView gyroscopeYvalue;
     private TextView gyroscopeZvalue;
 
+
     private SensorManager sensorManager;
+
+//    Declaring sensor variable
     private Sensor sensor1, sensor2, sensor3, sensor4;
 
     private NotificationManagerCompat notificationManager;
@@ -52,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         notificationManager = NotificationManagerCompat.from(this);
 
-        showNotification(x, y, z, k);
 
         LightSensorXvalue = findViewById(R.id.lightSensorXId);
 
@@ -87,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         AccelerometerSensorBtn.setOnClickListener(this);
         GyroscopeSensorBtn.setOnClickListener(this);
 
-//        showNotification(x, y, z, k);
+//        Called notification function
+        showNotification(x, y, z, k);
 
     }
 
@@ -98,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
             LightSensorXvalue.setText(String.valueOf(event.values[0]));
             x= event.values[0];
-//            showNotification();
 
 
         }
@@ -109,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             y= event.values[0];
 
-//            showNotification();
         }
 
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -118,8 +122,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             AccelerometerZvalue.setText(String.valueOf(event.values[2]));
 
             z= event.values[0];
-
-//            showNotification();
 
         }
 
@@ -130,8 +132,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             k = event.values[0];
         }
-
-//        showNotification(x, y, z, k);
 
     }
 
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.unregisterListener(this);
     }
 
-
+//Declaring notification function
     public void showNotification( double a , double b, double c, double d) {
 
           RemoteViews collapsedView = new RemoteViews(getPackageName(),

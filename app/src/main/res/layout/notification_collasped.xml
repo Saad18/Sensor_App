@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Message!"
-        android:textColor="@color/design_default_color_error" />
+        android:textColor="#278C2B" />
     <TextView
         android:id="@+id/text_view_collapsed_2"
         style="@style/TextAppearance.Compat.Notification.Info"
